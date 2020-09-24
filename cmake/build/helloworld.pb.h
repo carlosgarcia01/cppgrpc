@@ -317,20 +317,13 @@ class NumberRequest PROTOBUF_FINAL :
   enum : int {
     kValueFieldNumber = 1,
   };
-  // string value = 1;
+  // int32 value = 1;
   void clear_value();
-  const std::string& value() const;
-  void set_value(const std::string& value);
-  void set_value(std::string&& value);
-  void set_value(const char* value);
-  void set_value(const char* value, size_t size);
-  std::string* mutable_value();
-  std::string* release_value();
-  void set_allocated_value(std::string* value);
+  ::PROTOBUF_NAMESPACE_ID::int32 value() const;
+  void set_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  const std::string& _internal_value() const;
-  void _internal_set_value(const std::string& value);
-  std::string* _internal_mutable_value();
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_value() const;
+  void _internal_set_value(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:helloworld.NumberRequest)
@@ -340,7 +333,7 @@ class NumberRequest PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
+  ::PROTOBUF_NAMESPACE_ID::int32 value_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_helloworld_2eproto;
 };
@@ -647,66 +640,24 @@ class HelloReply PROTOBUF_FINAL :
 
 // NumberRequest
 
-// string value = 1;
+// int32 value = 1;
 inline void NumberRequest::clear_value() {
-  value_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  value_ = 0;
 }
-inline const std::string& NumberRequest::value() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 NumberRequest::_internal_value() const {
+  return value_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 NumberRequest::value() const {
   // @@protoc_insertion_point(field_get:helloworld.NumberRequest.value)
   return _internal_value();
 }
-inline void NumberRequest::set_value(const std::string& value) {
+inline void NumberRequest::_internal_set_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  value_ = value;
+}
+inline void NumberRequest::set_value(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_value(value);
   // @@protoc_insertion_point(field_set:helloworld.NumberRequest.value)
-}
-inline std::string* NumberRequest::mutable_value() {
-  // @@protoc_insertion_point(field_mutable:helloworld.NumberRequest.value)
-  return _internal_mutable_value();
-}
-inline const std::string& NumberRequest::_internal_value() const {
-  return value_.Get();
-}
-inline void NumberRequest::_internal_set_value(const std::string& value) {
-  
-  value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
-}
-inline void NumberRequest::set_value(std::string&& value) {
-  
-  value_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:helloworld.NumberRequest.value)
-}
-inline void NumberRequest::set_value(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
-              GetArena());
-  // @@protoc_insertion_point(field_set_char:helloworld.NumberRequest.value)
-}
-inline void NumberRequest::set_value(const char* value,
-    size_t size) {
-  
-  value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:helloworld.NumberRequest.value)
-}
-inline std::string* NumberRequest::_internal_mutable_value() {
-  
-  return value_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* NumberRequest::release_value() {
-  // @@protoc_insertion_point(field_release:helloworld.NumberRequest.value)
-  return value_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline void NumberRequest::set_allocated_value(std::string* value) {
-  if (value != nullptr) {
-    
-  } else {
-    
-  }
-  value_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value,
-      GetArena());
-  // @@protoc_insertion_point(field_set_allocated:helloworld.NumberRequest.value)
 }
 
 // -------------------------------------------------------------------

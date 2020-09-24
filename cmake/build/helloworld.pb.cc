@@ -133,16 +133,16 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_helloworld_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020helloworld.proto\022\nhelloworld\"\r\n\013NullRe"
-  "quest\"\036\n\rNumberRequest\022\r\n\005value\030\001 \001(\t\"\034\n"
+  "quest\"\036\n\rNumberRequest\022\r\n\005value\030\001 \001(\005\"\034\n"
   "\014HelloRequest\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloRepl"
-  "y\022\017\n\007message\030\001 \001(\t2\315\001\n\007Greeter\022>\n\010SayHel"
+  "y\022\017\n\007message\030\001 \001(\t2\314\001\n\007Greeter\022>\n\010SayHel"
   "lo\022\030.helloworld.HelloRequest\032\026.helloworl"
   "d.HelloReply\"\000\022@\n\010getValue\022\027.helloworld."
   "NullRequest\032\031.helloworld.NumberRequest\"\000"
-  "\022@\n\010setValue\022\031.helloworld.NumberRequest\032"
-  "\027.helloworld.NullRequest\"\000B6\n\033io.grpc.ex"
-  "amples.helloworldB\017HelloWorldProtoP\001\242\002\003H"
-  "LWb\006proto3"
+  "\022\?\n\010setValue\022\031.helloworld.NumberRequest\032"
+  "\026.helloworld.HelloReply\"\000B6\n\033io.grpc.exa"
+  "mples.helloworldB\017HelloWorldProtoP\001\242\002\003HL"
+  "Wb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_helloworld_2eproto_deps[1] = {
 };
@@ -154,7 +154,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_hel
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_helloworld_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto = {
-  false, false, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 410,
+  false, false, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 409,
   &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_helloworld_2eproto::offsets,
   file_level_metadata_helloworld_2eproto, 4, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,
@@ -346,17 +346,12 @@ NumberRequest::NumberRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 NumberRequest::NumberRequest(const NumberRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_value().empty()) {
-    value_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_value(),
-      GetArena());
-  }
+  value_ = from.value_;
   // @@protoc_insertion_point(copy_constructor:helloworld.NumberRequest)
 }
 
 void NumberRequest::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_NumberRequest_helloworld_2eproto.base);
-  value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  value_ = 0;
 }
 
 NumberRequest::~NumberRequest() {
@@ -367,7 +362,6 @@ NumberRequest::~NumberRequest() {
 
 void NumberRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  value_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void NumberRequest::ArenaDtor(void* object) {
@@ -391,7 +385,7 @@ void NumberRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  value_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  value_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -403,12 +397,10 @@ const char* NumberRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string value = 1;
+      // int32 value = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_value();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "helloworld.NumberRequest.value"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          value_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -440,14 +432,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string value = 1;
-  if (this->value().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_value().data(), static_cast<int>(this->_internal_value().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "helloworld.NumberRequest.value");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_value(), target);
+  // int32 value = 1;
+  if (this->value() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_value(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -466,10 +454,10 @@ size_t NumberRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string value = 1;
-  if (this->value().size() > 0) {
+  // int32 value = 1;
+  if (this->value() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_value());
   }
 
@@ -504,7 +492,7 @@ void NumberRequest::MergeFrom(const NumberRequest& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.value().size() > 0) {
+  if (from.value() != 0) {
     _internal_set_value(from._internal_value());
   }
 }
@@ -530,7 +518,7 @@ bool NumberRequest::IsInitialized() const {
 void NumberRequest::InternalSwap(NumberRequest* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  value_.Swap(&other->value_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(value_, other->value_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata NumberRequest::GetMetadata() const {

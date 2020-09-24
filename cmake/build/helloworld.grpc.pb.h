@@ -67,12 +67,12 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NumberRequest>> PrepareAsyncgetValue(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NumberRequest>>(PrepareAsyncgetValueRaw(context, request, cq));
     }
-    virtual ::grpc::Status setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::helloworld::NullRequest* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>> AsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>>(AsyncsetValueRaw(context, request, cq));
+    virtual ::grpc::Status setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::helloworld::HelloReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>> AsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>>(AsyncsetValueRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>> PrepareAsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>>(PrepareAsyncsetValueRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>> PrepareAsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>>(PrepareAsyncsetValueRaw(context, request, cq));
     }
     class experimental_async_interface {
      public:
@@ -102,17 +102,17 @@ class Greeter final {
       #else
       virtual void getValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NumberRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
-      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
-      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -127,8 +127,8 @@ class Greeter final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* PrepareAsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NumberRequest>* AsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NumberRequest>* PrepareAsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>* AsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::NullRequest>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* AsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -147,12 +147,12 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>> PrepareAsyncgetValue(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>>(PrepareAsyncgetValueRaw(context, request, cq));
     }
-    ::grpc::Status setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::helloworld::NullRequest* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>> AsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>>(AsyncsetValueRaw(context, request, cq));
+    ::grpc::Status setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::helloworld::HelloReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>> AsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>>(AsyncsetValueRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>> PrepareAsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>>(PrepareAsyncsetValueRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>> PrepareAsyncsetValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>>(PrepareAsyncsetValueRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -181,17 +181,17 @@ class Greeter final {
       #else
       void getValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NumberRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
-      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, std::function<void(::grpc::Status)>) override;
-      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, std::function<void(::grpc::Status)>) override;
+      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) override;
+      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
-      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NullRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
      private:
       friend class Stub;
@@ -208,8 +208,8 @@ class Greeter final {
     ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* PrepareAsyncSayHelloRaw(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>* AsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>* PrepareAsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>* AsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::helloworld::NullRequest>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* AsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SayHello_;
     const ::grpc::internal::RpcMethod rpcmethod_getValue_;
     const ::grpc::internal::RpcMethod rpcmethod_setValue_;
@@ -223,7 +223,7 @@ class Greeter final {
     // Sends a greeting
     virtual ::grpc::Status SayHello(::grpc::ServerContext* context, const ::helloworld::HelloRequest* request, ::helloworld::HelloReply* response);
     virtual ::grpc::Status getValue(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::NumberRequest* response);
-    virtual ::grpc::Status setValue(::grpc::ServerContext* context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response);
+    virtual ::grpc::Status setValue(::grpc::ServerContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SayHello : public BaseClass {
@@ -277,11 +277,11 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestsetValue(::grpc::ServerContext* context, ::helloworld::NumberRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::NullRequest>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestsetValue(::grpc::ServerContext* context, ::helloworld::NumberRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::HelloReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -392,38 +392,38 @@ class Greeter final {
       ::grpc::Service::experimental().
     #endif
         MarkMethodCallback(2,
-          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NumberRequest, ::helloworld::NullRequest>(
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NumberRequest, ::helloworld::HelloReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
                    ::grpc::CallbackServerContext*
     #else
                    ::grpc::experimental::CallbackServerContext*
     #endif
-                     context, const ::helloworld::NumberRequest* request, ::helloworld::NullRequest* response) { return this->setValue(context, request, response); }));}
+                     context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response) { return this->setValue(context, request, response); }));}
     void SetMessageAllocatorFor_setValue(
-        ::grpc::experimental::MessageAllocator< ::helloworld::NumberRequest, ::helloworld::NullRequest>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::helloworld::NumberRequest, ::helloworld::HelloReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
     #else
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
     #endif
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NumberRequest, ::helloworld::NullRequest>*>(handler)
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NumberRequest, ::helloworld::HelloReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~ExperimentalWithCallbackMethod_setValue() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* setValue(
-      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/)
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/)
     #else
     virtual ::grpc::experimental::ServerUnaryReactor* setValue(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/)
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/)
     #endif
       { return nullptr; }
   };
@@ -478,7 +478,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -535,7 +535,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -644,7 +644,7 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -719,10 +719,10 @@ class Greeter final {
     WithStreamedUnaryMethod_setValue() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::helloworld::NumberRequest, ::helloworld::NullRequest>(
+          ::helloworld::NumberRequest, ::helloworld::HelloReply>(
             [this](::grpc_impl::ServerContext* context,
                    ::grpc_impl::ServerUnaryStreamer<
-                     ::helloworld::NumberRequest, ::helloworld::NullRequest>* streamer) {
+                     ::helloworld::NumberRequest, ::helloworld::HelloReply>* streamer) {
                        return this->StreamedsetValue(context,
                          streamer);
                   }));
@@ -731,12 +731,12 @@ class Greeter final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::NullRequest* /*response*/) override {
+    ::grpc::Status setValue(::grpc::ServerContext* /*context*/, const ::helloworld::NumberRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedsetValue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::NumberRequest,::helloworld::NullRequest>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedsetValue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::NumberRequest,::helloworld::HelloReply>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_getValue<WithStreamedUnaryMethod_setValue<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;

@@ -1,4 +1,4 @@
-/home/cg/Documents/grpccpp/cmake/build/CMakeFiles/rebuild_cache.dir
-/home/cg/Documents/grpccpp/cmake/build/CMakeFiles/edit_cache.dir
-/home/cg/Documents/grpccpp/cmake/build/CMakeFiles/greeter_server.dir
-/home/cg/Documents/grpccpp/cmake/build/CMakeFiles/greeter_client.dir
+/home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/CMakeFiles/edit_cache.dir
+/home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/CMakeFiles/rebuild_cache.dir
+/home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/CMakeFiles/greeter_server.dir
+/home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/CMakeFiles/greeter_client.dir
