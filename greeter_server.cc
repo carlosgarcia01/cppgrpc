@@ -36,6 +36,8 @@ using grpc::ServerContext;
 using grpc::Status;
 using helloworld::HelloRequest;
 using helloworld::HelloReply;
+using helloworld::NullRequest;
+using helloworld::NumberRequest;
 using helloworld::Greeter;
 
 int number;
@@ -47,12 +49,29 @@ class GreeterServiceImpl final : public Greeter::Service {
     reply->set_message(prefix + request->name());
     return Status::OK;
   }
+
+  Status getValue(ServerContext* context, const NullRequest* request,
+                  NumberRequest* reply) override {
+    //std::string s = std::to_string(number);
+    reply->set_value(number);
+    return Status::OK;
+  }
+
+  Status setValue(ServerContext* context, const NumberRequest* request,
+                  HelloReply* reply) override {
+    std::string prefix("valor ingresado ");           
+    number = number +  request->value();
+    std::string s = std::to_string(request->value());
+    reply->set_message(prefix + s);
+    return Status::OK;
+  }
+
 };
 
 void RunServer() {
   std::string server_address("0.0.0.0:50051");
   GreeterServiceImpl service;
-  number=0;
+  number=5;
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
   ServerBuilder builder;
