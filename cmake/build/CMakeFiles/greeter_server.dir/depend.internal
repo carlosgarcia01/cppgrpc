@@ -177,6 +177,8 @@ CMakeFiles/greeter_server.dir/greeter_server.cc.o
  /home/andresagudelo/.local/include/grpcpp/support/string_ref.h
  /home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/helloworld.grpc.pb.h
  /home/andresagudelo/Documentos/projects/cppgrpc/cmake/build/helloworld.pb.h
+ /home/andresagudelo/Documentos/projects/cppgrpc/cpp/usbdev.cpp
+ /home/andresagudelo/Documentos/projects/cppgrpc/cpp/usbdev.h
  /home/andresagudelo/Documentos/projects/cppgrpc/greeter_server.cc
 CMakeFiles/greeter_server.dir/helloworld.grpc.pb.cc.o
  /home/andresagudelo/.local/include/google/protobuf/any.h

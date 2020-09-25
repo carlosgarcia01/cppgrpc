@@ -47,7 +47,7 @@ struct TableStruct_helloworld_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,6 +55,9 @@ struct TableStruct_helloworld_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto;
 namespace helloworld {
+class DeviceState;
+class DeviceStateDefaultTypeInternal;
+extern DeviceStateDefaultTypeInternal _DeviceState_default_instance_;
 class HelloReply;
 class HelloReplyDefaultTypeInternal;
 extern HelloReplyDefaultTypeInternal _HelloReply_default_instance_;
@@ -69,6 +72,7 @@ class NumberRequestDefaultTypeInternal;
 extern NumberRequestDefaultTypeInternal _NumberRequest_default_instance_;
 }  // namespace helloworld
 PROTOBUF_NAMESPACE_OPEN
+template<> ::helloworld::DeviceState* Arena::CreateMaybeMessage<::helloworld::DeviceState>(Arena*);
 template<> ::helloworld::HelloReply* Arena::CreateMaybeMessage<::helloworld::HelloReply>(Arena*);
 template<> ::helloworld::HelloRequest* Arena::CreateMaybeMessage<::helloworld::HelloRequest>(Arena*);
 template<> ::helloworld::NullRequest* Arena::CreateMaybeMessage<::helloworld::NullRequest>(Arena*);
@@ -202,6 +206,143 @@ class NullRequest PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class DeviceState PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.DeviceState) */ {
+ public:
+  inline DeviceState() : DeviceState(nullptr) {}
+  virtual ~DeviceState();
+
+  DeviceState(const DeviceState& from);
+  DeviceState(DeviceState&& from) noexcept
+    : DeviceState() {
+    *this = ::std::move(from);
+  }
+
+  inline DeviceState& operator=(const DeviceState& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DeviceState& operator=(DeviceState&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const DeviceState& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DeviceState* internal_default_instance() {
+    return reinterpret_cast<const DeviceState*>(
+               &_DeviceState_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(DeviceState& a, DeviceState& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DeviceState* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DeviceState* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DeviceState* New() const final {
+    return CreateMaybeMessage<DeviceState>(nullptr);
+  }
+
+  DeviceState* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DeviceState>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DeviceState& from);
+  void MergeFrom(const DeviceState& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DeviceState* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "helloworld.DeviceState";
+  }
+  protected:
+  explicit DeviceState(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_helloworld_2eproto);
+    return ::descriptor_table_helloworld_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStateFieldNumber = 1,
+  };
+  // bool state = 1;
+  void clear_state();
+  bool state() const;
+  void set_state(bool value);
+  private:
+  bool _internal_state() const;
+  void _internal_set_state(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:helloworld.DeviceState)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  bool state_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_helloworld_2eproto;
+};
+// -------------------------------------------------------------------
+
 class NumberRequest PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:helloworld.NumberRequest) */ {
  public:
@@ -244,7 +385,7 @@ class NumberRequest PROTOBUF_FINAL :
                &_NumberRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(NumberRequest& a, NumberRequest& b) {
     a.Swap(&b);
@@ -381,7 +522,7 @@ class HelloRequest PROTOBUF_FINAL :
                &_HelloRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(HelloRequest& a, HelloRequest& b) {
     a.Swap(&b);
@@ -525,7 +666,7 @@ class HelloReply PROTOBUF_FINAL :
                &_HelloReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(HelloReply& a, HelloReply& b) {
     a.Swap(&b);
@@ -635,6 +776,30 @@ class HelloReply PROTOBUF_FINAL :
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // NullRequest
+
+// -------------------------------------------------------------------
+
+// DeviceState
+
+// bool state = 1;
+inline void DeviceState::clear_state() {
+  state_ = false;
+}
+inline bool DeviceState::_internal_state() const {
+  return state_;
+}
+inline bool DeviceState::state() const {
+  // @@protoc_insertion_point(field_get:helloworld.DeviceState.state)
+  return _internal_state();
+}
+inline void DeviceState::_internal_set_state(bool value) {
+  
+  state_ = value;
+}
+inline void DeviceState::set_state(bool value) {
+  _internal_set_state(value);
+  // @@protoc_insertion_point(field_set:helloworld.DeviceState.state)
+}
 
 // -------------------------------------------------------------------
 
@@ -795,6 +960,8 @@ inline void HelloReply::set_allocated_message(std::string* message) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

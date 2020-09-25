@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "optional": "cpp",
-        "system_error": "cpp"
+        "system_error": "cpp",
+        "string": "cpp",
+        "qstring": "cpp",
+        "qdebug": "cpp",
+        "qthread": "cpp"
     }
 }

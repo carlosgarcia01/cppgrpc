@@ -27,10 +27,16 @@ service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   rpc getValue (NullRequest) returns (NumberRequest) {}
   rpc setValue (NumberRequest) returns (HelloReply) {}
+
+  rpc openDev (NullRequest) returns (DeviceState) {}
 }
 
 message NullRequest {
 
+}
+
+message DeviceState {
+  bool state = 1;
 }
 
 message NumberRequest {

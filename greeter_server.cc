@@ -19,7 +19,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-
+#include "cpp/usbdev.cpp"
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
@@ -39,8 +39,11 @@ using helloworld::HelloReply;
 using helloworld::NullRequest;
 using helloworld::NumberRequest;
 using helloworld::Greeter;
+using helloworld::DeviceState;
+
 
 int number;
+usbdev dev;
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
@@ -66,12 +69,21 @@ class GreeterServiceImpl final : public Greeter::Service {
     return Status::OK;
   }
 
+
+  Status openDev(ServerContext* context, const NullRequest* request,
+                  DeviceState* reply) override {
+    bool device = dev.openDevice();
+    reply->set_message(device);
+    return Status::OK;
+  }
+
 };
 
 void RunServer() {
   std::string server_address("0.0.0.0:50051");
   GreeterServiceImpl service;
   number=5;
+  dev = new usbdev();
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
   ServerBuilder builder;
