@@ -19,6 +19,10 @@ class NullRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<NullRequest> _instance;
 } _NullRequest_default_instance_;
+class PathologiesListDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PathologiesList> _instance;
+} _PathologiesList_default_instance_;
 class DeviceStateDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeviceState> _instance;
@@ -106,7 +110,21 @@ static void InitDefaultsscc_info_NumberRequest_helloworld_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_NumberRequest_helloworld_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_NumberRequest_helloworld_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_helloworld_2eproto[5];
+static void InitDefaultsscc_info_PathologiesList_helloworld_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::helloworld::_PathologiesList_default_instance_;
+    new (ptr) ::helloworld::PathologiesList();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::helloworld::PathologiesList::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PathologiesList_helloworld_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PathologiesList_helloworld_2eproto}, {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_helloworld_2eproto[6];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_helloworld_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_helloworld_2eproto = nullptr;
 
@@ -116,6 +134,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_helloworld_2eproto::offsets[] 
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::helloworld::PathologiesList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::helloworld::PathologiesList, list_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::helloworld::DeviceState, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -143,14 +167,16 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_helloworld_2eproto::offsets[] 
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::helloworld::NullRequest)},
-  { 5, -1, sizeof(::helloworld::DeviceState)},
-  { 11, -1, sizeof(::helloworld::NumberRequest)},
-  { 17, -1, sizeof(::helloworld::HelloRequest)},
-  { 23, -1, sizeof(::helloworld::HelloReply)},
+  { 5, -1, sizeof(::helloworld::PathologiesList)},
+  { 11, -1, sizeof(::helloworld::DeviceState)},
+  { 17, -1, sizeof(::helloworld::NumberRequest)},
+  { 23, -1, sizeof(::helloworld::HelloRequest)},
+  { 29, -1, sizeof(::helloworld::HelloReply)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_NullRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_PathologiesList_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_DeviceState_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_NumberRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::helloworld::_HelloRequest_default_instance_),
@@ -159,34 +185,38 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_helloworld_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020helloworld.proto\022\nhelloworld\"\r\n\013NullRe"
-  "quest\"\034\n\013DeviceState\022\r\n\005state\030\001 \001(\010\"\036\n\rN"
-  "umberRequest\022\r\n\005value\030\001 \001(\005\"\034\n\014HelloRequ"
-  "est\022\014\n\004name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007messa"
-  "ge\030\001 \001(\t2\213\002\n\007Greeter\022>\n\010SayHello\022\030.hello"
-  "world.HelloRequest\032\026.helloworld.HelloRep"
-  "ly\"\000\022@\n\010getValue\022\027.helloworld.NullReques"
-  "t\032\031.helloworld.NumberRequest\"\000\022\?\n\010setVal"
-  "ue\022\031.helloworld.NumberRequest\032\026.hellowor"
-  "ld.HelloReply\"\000\022=\n\007openDev\022\027.helloworld."
-  "NullRequest\032\027.helloworld.DeviceState\"\000B6"
-  "\n\033io.grpc.examples.helloworldB\017HelloWorl"
-  "dProtoP\001\242\002\003HLWb\006proto3"
+  "quest\"\037\n\017PathologiesList\022\014\n\004list\030\001 \003(\005\"\034"
+  "\n\013DeviceState\022\r\n\005state\030\001 \001(\010\"\036\n\rNumberRe"
+  "quest\022\r\n\005value\030\001 \001(\005\"\034\n\014HelloRequest\022\014\n\004"
+  "name\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001("
+  "\t2\320\002\n\007Greeter\022>\n\010SayHello\022\030.helloworld.H"
+  "elloRequest\032\026.helloworld.HelloReply\"\000\022@\n"
+  "\010getValue\022\027.helloworld.NullRequest\032\031.hel"
+  "loworld.NumberRequest\"\000\022\?\n\010setValue\022\031.he"
+  "lloworld.NumberRequest\032\026.helloworld.Hell"
+  "oReply\"\000\022=\n\007openDev\022\027.helloworld.NullReq"
+  "uest\032\027.helloworld.DeviceState\"\000\022C\n\016getPa"
+  "thologies\022\027.helloworld.NullRequest\032\026.hel"
+  "loworld.HelloReply\"\000B6\n\033io.grpc.examples"
+  ".helloworldB\017HelloWorldProtoP\001\242\002\003HLWb\006pr"
+  "oto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_helloworld_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_helloworld_2eproto_sccs[5] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_helloworld_2eproto_sccs[6] = {
   &scc_info_DeviceState_helloworld_2eproto.base,
   &scc_info_HelloReply_helloworld_2eproto.base,
   &scc_info_HelloRequest_helloworld_2eproto.base,
   &scc_info_NullRequest_helloworld_2eproto.base,
   &scc_info_NumberRequest_helloworld_2eproto.base,
+  &scc_info_PathologiesList_helloworld_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_helloworld_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_helloworld_2eproto = {
-  false, false, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 502,
-  &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 5, 0,
+  false, false, descriptor_table_protodef_helloworld_2eproto, "helloworld.proto", 604,
+  &descriptor_table_helloworld_2eproto_once, descriptor_table_helloworld_2eproto_sccs, descriptor_table_helloworld_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_helloworld_2eproto::offsets,
-  file_level_metadata_helloworld_2eproto, 5, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,
+  file_level_metadata_helloworld_2eproto, 6, file_level_enum_descriptors_helloworld_2eproto, file_level_service_descriptors_helloworld_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -354,6 +384,215 @@ void NullRequest::InternalSwap(NullRequest* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata NullRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void PathologiesList::InitAsDefaultInstance() {
+}
+class PathologiesList::_Internal {
+ public:
+};
+
+PathologiesList::PathologiesList(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  list_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:helloworld.PathologiesList)
+}
+PathologiesList::PathologiesList(const PathologiesList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      list_(from.list_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:helloworld.PathologiesList)
+}
+
+void PathologiesList::SharedCtor() {
+}
+
+PathologiesList::~PathologiesList() {
+  // @@protoc_insertion_point(destructor:helloworld.PathologiesList)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void PathologiesList::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+}
+
+void PathologiesList::ArenaDtor(void* object) {
+  PathologiesList* _this = reinterpret_cast< PathologiesList* >(object);
+  (void)_this;
+}
+void PathologiesList::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void PathologiesList::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PathologiesList& PathologiesList::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PathologiesList_helloworld_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PathologiesList::Clear() {
+// @@protoc_insertion_point(message_clear_start:helloworld.PathologiesList)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  list_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PathologiesList::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated int32 list = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_list(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
+          _internal_add_list(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PathologiesList::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:helloworld.PathologiesList)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated int32 list = 1;
+  {
+    int byte_size = _list_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          1, _internal_list(), byte_size, target);
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:helloworld.PathologiesList)
+  return target;
+}
+
+size_t PathologiesList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:helloworld.PathologiesList)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated int32 list = 1;
+  {
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      Int32Size(this->list_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _list_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PathologiesList::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:helloworld.PathologiesList)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PathologiesList* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PathologiesList>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:helloworld.PathologiesList)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:helloworld.PathologiesList)
+    MergeFrom(*source);
+  }
+}
+
+void PathologiesList::MergeFrom(const PathologiesList& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:helloworld.PathologiesList)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  list_.MergeFrom(from.list_);
+}
+
+void PathologiesList::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:helloworld.PathologiesList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PathologiesList::CopyFrom(const PathologiesList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:helloworld.PathologiesList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PathologiesList::IsInitialized() const {
+  return true;
+}
+
+void PathologiesList::InternalSwap(PathologiesList* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  list_.InternalSwap(&other->list_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PathologiesList::GetMetadata() const {
   return GetMetadataStatic();
 }
 
@@ -1173,6 +1412,9 @@ void HelloReply::InternalSwap(HelloReply* other) {
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::helloworld::NullRequest* Arena::CreateMaybeMessage< ::helloworld::NullRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::helloworld::NullRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::helloworld::PathologiesList* Arena::CreateMaybeMessage< ::helloworld::PathologiesList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::helloworld::PathologiesList >(arena);
 }
 template<> PROTOBUF_NOINLINE ::helloworld::DeviceState* Arena::CreateMaybeMessage< ::helloworld::DeviceState >(Arena* arena) {
   return Arena::CreateMessageInternal< ::helloworld::DeviceState >(arena);

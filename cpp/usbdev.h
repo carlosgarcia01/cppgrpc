@@ -1,19 +1,17 @@
 #ifndef USBDEV_H
 #define USBDEV_H
 
+#include <QString>
 #include <unistd.h>
 #include <termios.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <stdio.h>
 #include <QThread>
+#include <stdio.h>
 #include <QStringList>
-#include <QString>
 #include <QDebug>
-
-
 
 //NOTE: Create a file 70-imu-device.rules in /etc/dev/dules.d with this line:
 //#SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", NAME="ttyUSB0", MODE="0666", OWNER="eritski"

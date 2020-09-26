@@ -19,16 +19,19 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include "cpp/usbdev.cpp"
+//#include "cpp/usbdev.cpp"
+
+//#include "cpp/aurajson.cpp"
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
-
-#ifdef BAZEL_BUILD
-#include "examples/protos/helloworld.grpc.pb.h"
-#else
 #include "cmake/build/helloworld.grpc.pb.h"
-#endif
+
+// #ifdef BAZEL_BUILD
+// #include "examples/protos/helloworld.grpc.pb.h"
+// #else
+// #include "cmake/build/helloworld.grpc.pb.h"
+// #endif
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -40,10 +43,14 @@ using helloworld::NullRequest;
 using helloworld::NumberRequest;
 using helloworld::Greeter;
 using helloworld::DeviceState;
-
+using helloworld::PathologiesList;
 
 int number;
-usbdev dev;
+//usbdev* dev;
+// usbdev dev = usbdev();
+
+//AuraJson json = AuraJson();
+
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
@@ -70,20 +77,33 @@ class GreeterServiceImpl final : public Greeter::Service {
   }
 
 
-  Status openDev(ServerContext* context, const NullRequest* request,
-                  DeviceState* reply) override {
-    bool device = dev.openDevice();
-    reply->set_message(device);
+  // Status openDev(ServerContext* context, const NullRequest* request,
+  //                 DeviceState* reply) override {
+  //   bool device = dev.openDevice();
+  //   reply->set_state(device);
+  //   return Status::OK;
+  // }
+
+  //   Status getPathologies(ServerContext* context, const NullRequest* request,
+  //                 PathologiesList* reply) override {
+  //     QVector<int> list = json.getPathologies();
+  //     reply->set_list([1,2,3]);
+  //   return Status::OK;
+  // }
+
+  Status getPathologies(ServerContext* context, const NullRequest* request,
+                  HelloReply* reply) override {
+      //QVector<int> list = json.getPathologies();
+      reply->set_message("getting pathologies");
     return Status::OK;
   }
-
 };
 
 void RunServer() {
   std::string server_address("0.0.0.0:50051");
   GreeterServiceImpl service;
   number=5;
-  dev = new usbdev();
+ // dev = usbdev();
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
   ServerBuilder builder;

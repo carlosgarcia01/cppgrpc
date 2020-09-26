@@ -81,6 +81,13 @@ class Greeter final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::DeviceState>> PrepareAsyncopenDev(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::DeviceState>>(PrepareAsyncopenDevRaw(context, request, cq));
     }
+    virtual ::grpc::Status getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::helloworld::HelloReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>> AsyncgetPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>>(AsyncgetPathologiesRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>> PrepareAsyncgetPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>>(PrepareAsyncgetPathologiesRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -133,6 +140,18 @@ class Greeter final {
       #else
       virtual void openDev(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::DeviceState* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      virtual void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     typedef class experimental_async_interface async_interface;
@@ -150,6 +169,8 @@ class Greeter final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::DeviceState>* AsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::DeviceState>* PrepareAsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* AsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::helloworld::HelloReply>* PrepareAsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -181,6 +202,13 @@ class Greeter final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>> PrepareAsyncopenDev(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>>(PrepareAsyncopenDevRaw(context, request, cq));
+    }
+    ::grpc::Status getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::helloworld::HelloReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>> AsyncgetPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>>(AsyncgetPathologiesRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>> PrepareAsyncgetPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>>(PrepareAsyncgetPathologiesRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -233,6 +261,18 @@ class Greeter final {
       #else
       void openDev(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::DeviceState* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) override;
+      void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -252,10 +292,13 @@ class Greeter final {
     ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>* AsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>* PrepareAsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* AsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* PrepareAsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SayHello_;
     const ::grpc::internal::RpcMethod rpcmethod_getValue_;
     const ::grpc::internal::RpcMethod rpcmethod_setValue_;
     const ::grpc::internal::RpcMethod rpcmethod_openDev_;
+    const ::grpc::internal::RpcMethod rpcmethod_getPathologies_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -268,6 +311,7 @@ class Greeter final {
     virtual ::grpc::Status getValue(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::NumberRequest* response);
     virtual ::grpc::Status setValue(::grpc::ServerContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response);
     virtual ::grpc::Status openDev(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::DeviceState* response);
+    virtual ::grpc::Status getPathologies(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SayHello : public BaseClass {
@@ -349,7 +393,27 @@ class Greeter final {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SayHello<WithAsyncMethod_getValue<WithAsyncMethod_setValue<WithAsyncMethod_openDev<Service > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_getPathologies() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetPathologies(::grpc::ServerContext* context, ::helloworld::NullRequest* request, ::grpc::ServerAsyncResponseWriter< ::helloworld::HelloReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SayHello<WithAsyncMethod_getValue<WithAsyncMethod_setValue<WithAsyncMethod_openDev<WithAsyncMethod_getPathologies<Service > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_SayHello : public BaseClass {
    private:
@@ -538,11 +602,58 @@ class Greeter final {
     #endif
       { return nullptr; }
   };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_getPathologies() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NullRequest, ::helloworld::HelloReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response) { return this->getPathologies(context, request, response); }));}
+    void SetMessageAllocatorFor_getPathologies(
+        ::grpc::experimental::MessageAllocator< ::helloworld::NullRequest, ::helloworld::HelloReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::helloworld::NullRequest, ::helloworld::HelloReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getPathologies(
+      ::grpc::CallbackServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getPathologies(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_SayHello<ExperimentalWithCallbackMethod_getValue<ExperimentalWithCallbackMethod_setValue<ExperimentalWithCallbackMethod_openDev<Service > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_SayHello<ExperimentalWithCallbackMethod_getValue<ExperimentalWithCallbackMethod_setValue<ExperimentalWithCallbackMethod_openDev<ExperimentalWithCallbackMethod_getPathologies<Service > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_SayHello<ExperimentalWithCallbackMethod_getValue<ExperimentalWithCallbackMethod_setValue<ExperimentalWithCallbackMethod_openDev<Service > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_SayHello<ExperimentalWithCallbackMethod_getValue<ExperimentalWithCallbackMethod_setValue<ExperimentalWithCallbackMethod_openDev<ExperimentalWithCallbackMethod_getPathologies<Service > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SayHello : public BaseClass {
    private:
@@ -607,6 +718,23 @@ class Greeter final {
     }
     // disable synchronous version of this method
     ::grpc::Status openDev(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::DeviceState* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_getPathologies() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -689,6 +817,26 @@ class Greeter final {
     }
     void RequestopenDev(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_getPathologies() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetPathologies(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -844,6 +992,44 @@ class Greeter final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getPathologies() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->getPathologies(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getPathologies(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getPathologies(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SayHello : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -951,9 +1137,36 @@ class Greeter final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedopenDev(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::NullRequest,::helloworld::DeviceState>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_getValue<WithStreamedUnaryMethod_setValue<WithStreamedUnaryMethod_openDev<Service > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_getPathologies : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_getPathologies() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::helloworld::NullRequest, ::helloworld::HelloReply>(
+            [this](::grpc_impl::ServerContext* context,
+                   ::grpc_impl::ServerUnaryStreamer<
+                     ::helloworld::NullRequest, ::helloworld::HelloReply>* streamer) {
+                       return this->StreamedgetPathologies(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_getPathologies() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getPathologies(::grpc::ServerContext* /*context*/, const ::helloworld::NullRequest* /*request*/, ::helloworld::HelloReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetPathologies(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::helloworld::NullRequest,::helloworld::HelloReply>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_getValue<WithStreamedUnaryMethod_setValue<WithStreamedUnaryMethod_openDev<WithStreamedUnaryMethod_getPathologies<Service > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_getValue<WithStreamedUnaryMethod_setValue<WithStreamedUnaryMethod_openDev<Service > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SayHello<WithStreamedUnaryMethod_getValue<WithStreamedUnaryMethod_setValue<WithStreamedUnaryMethod_openDev<WithStreamedUnaryMethod_getPathologies<Service > > > > > StreamedService;
 };
 
 }  // namespace helloworld

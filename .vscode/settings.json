@@ -5,6 +5,7 @@
         "string": "cpp",
         "qstring": "cpp",
         "qdebug": "cpp",
-        "qthread": "cpp"
+        "qthread": "cpp",
+        "qjsondocument": "cpp"
     }
 }
