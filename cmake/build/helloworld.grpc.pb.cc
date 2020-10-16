@@ -23,10 +23,6 @@ namespace helloworld {
 
 static const char* Greeter_method_names[] = {
   "/helloworld.Greeter/SayHello",
-  "/helloworld.Greeter/getValue",
-  "/helloworld.Greeter/setValue",
-  "/helloworld.Greeter/openDev",
-  "/helloworld.Greeter/getPathologies",
 };
 
 std::unique_ptr< Greeter::Stub> Greeter::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,10 +33,6 @@ std::unique_ptr< Greeter::Stub> Greeter::NewStub(const std::shared_ptr< ::grpc::
 
 Greeter::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_SayHello_(Greeter_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getValue_(Greeter_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_setValue_(Greeter_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_openDev_(Greeter_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_getPathologies_(Greeter_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Greeter::Stub::SayHello(::grpc::ClientContext* context, const ::helloworld::HelloRequest& request, ::helloworld::HelloReply* response) {
@@ -71,118 +63,6 @@ void Greeter::Stub::experimental_async::SayHello(::grpc::ClientContext* context,
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_SayHello_, context, request, false);
 }
 
-::grpc::Status Greeter::Stub::getValue(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::helloworld::NumberRequest* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getValue_, context, request, response);
-}
-
-void Greeter::Stub::experimental_async::getValue(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::NumberRequest* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getValue_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::getValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NumberRequest* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getValue_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::getValue(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::NumberRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getValue_, context, request, response, reactor);
-}
-
-void Greeter::Stub::experimental_async::getValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::NumberRequest* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getValue_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>* Greeter::Stub::AsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::NumberRequest>::Create(channel_.get(), cq, rpcmethod_getValue_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::NumberRequest>* Greeter::Stub::PrepareAsyncgetValueRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::NumberRequest>::Create(channel_.get(), cq, rpcmethod_getValue_, context, request, false);
-}
-
-::grpc::Status Greeter::Stub::setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::helloworld::HelloReply* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_setValue_, context, request, response);
-}
-
-void Greeter::Stub::experimental_async::setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_setValue_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_setValue_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::setValue(::grpc::ClientContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_setValue_, context, request, response, reactor);
-}
-
-void Greeter::Stub::experimental_async::setValue(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_setValue_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* Greeter::Stub::AsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_setValue_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* Greeter::Stub::PrepareAsyncsetValueRaw(::grpc::ClientContext* context, const ::helloworld::NumberRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_setValue_, context, request, false);
-}
-
-::grpc::Status Greeter::Stub::openDev(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::helloworld::DeviceState* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_openDev_, context, request, response);
-}
-
-void Greeter::Stub::experimental_async::openDev(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::DeviceState* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_openDev_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::openDev(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::DeviceState* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_openDev_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::openDev(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::DeviceState* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_openDev_, context, request, response, reactor);
-}
-
-void Greeter::Stub::experimental_async::openDev(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::DeviceState* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_openDev_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>* Greeter::Stub::AsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::DeviceState>::Create(channel_.get(), cq, rpcmethod_openDev_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::DeviceState>* Greeter::Stub::PrepareAsyncopenDevRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::DeviceState>::Create(channel_.get(), cq, rpcmethod_openDev_, context, request, false);
-}
-
-::grpc::Status Greeter::Stub::getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::helloworld::HelloReply* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getPathologies_, context, request, response);
-}
-
-void Greeter::Stub::experimental_async::getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getPathologies_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, std::function<void(::grpc::Status)> f) {
-  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getPathologies_, context, request, response, std::move(f));
-}
-
-void Greeter::Stub::experimental_async::getPathologies(::grpc::ClientContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getPathologies_, context, request, response, reactor);
-}
-
-void Greeter::Stub::experimental_async::getPathologies(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::helloworld::HelloReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
-  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_getPathologies_, context, request, response, reactor);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* Greeter::Stub::AsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_getPathologies_, context, request, true);
-}
-
-::grpc::ClientAsyncResponseReader< ::helloworld::HelloReply>* Greeter::Stub::PrepareAsyncgetPathologiesRaw(::grpc::ClientContext* context, const ::helloworld::NullRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::helloworld::HelloReply>::Create(channel_.get(), cq, rpcmethod_getPathologies_, context, request, false);
-}
-
 Greeter::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Greeter_method_names[0],
@@ -194,80 +74,12 @@ Greeter::Service::Service() {
              ::helloworld::HelloReply* resp) {
                return service->SayHello(ctx, req, resp);
              }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Greeter_method_names[1],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::NullRequest, ::helloworld::NumberRequest>(
-          [](Greeter::Service* service,
-             ::grpc_impl::ServerContext* ctx,
-             const ::helloworld::NullRequest* req,
-             ::helloworld::NumberRequest* resp) {
-               return service->getValue(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Greeter_method_names[2],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::NumberRequest, ::helloworld::HelloReply>(
-          [](Greeter::Service* service,
-             ::grpc_impl::ServerContext* ctx,
-             const ::helloworld::NumberRequest* req,
-             ::helloworld::HelloReply* resp) {
-               return service->setValue(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Greeter_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::NullRequest, ::helloworld::DeviceState>(
-          [](Greeter::Service* service,
-             ::grpc_impl::ServerContext* ctx,
-             const ::helloworld::NullRequest* req,
-             ::helloworld::DeviceState* resp) {
-               return service->openDev(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Greeter_method_names[4],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Greeter::Service, ::helloworld::NullRequest, ::helloworld::HelloReply>(
-          [](Greeter::Service* service,
-             ::grpc_impl::ServerContext* ctx,
-             const ::helloworld::NullRequest* req,
-             ::helloworld::HelloReply* resp) {
-               return service->getPathologies(ctx, req, resp);
-             }, this)));
 }
 
 Greeter::Service::~Service() {
 }
 
 ::grpc::Status Greeter::Service::SayHello(::grpc::ServerContext* context, const ::helloworld::HelloRequest* request, ::helloworld::HelloReply* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Greeter::Service::getValue(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::NumberRequest* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Greeter::Service::setValue(::grpc::ServerContext* context, const ::helloworld::NumberRequest* request, ::helloworld::HelloReply* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Greeter::Service::openDev(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::DeviceState* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status Greeter::Service::getPathologies(::grpc::ServerContext* context, const ::helloworld::NullRequest* request, ::helloworld::HelloReply* response) {
   (void) context;
   (void) request;
   (void) response;

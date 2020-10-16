@@ -6,11 +6,12 @@
                 "${workspaceFolder}/**",
                 "/usr/include/x86_64-linux-gnu/qt5",
                 "/usr/include/x86_64-linux-gnu/qt5/QtCore",
-                "/include"
+                "/home/carlos/grpc/include",
+                "/home/carlos/grpc/cmake/build/third_party"
             ],
             "defines": [],
-            //"compilerPath": "/usr/bin/clang",
-            "compilerPath": "/usr/bin/gcc",
+            "compilerPath": "/usr/bin/clang",
+            //"compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu18",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "gcc-x64"

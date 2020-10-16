@@ -1,4 +1,4 @@
-# Install script for directory: /home/cg/Documents/Projects/Aura/cppgrpc
+# Install script for directory: /home/carlos/Documents/Projects/Aura/cppgrpc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cg/Documents/Projects/Aura/cppgrpc/cmake/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/carlos/Documents/Projects/Aura/cppgrpc/cmake/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

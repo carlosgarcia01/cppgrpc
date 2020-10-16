@@ -25,27 +25,6 @@ package helloworld;
 service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
-  rpc getValue (NullRequest) returns (NumberRequest) {}
-  rpc setValue (NumberRequest) returns (HelloReply) {}
-  rpc openDev (NullRequest) returns (DeviceState) {}
-  rpc getPathologies (NullRequest) returns (HelloReply) {}
-  // rpc getPathologies (NullRequest) returns (PathologiesList) {}
-}
-
-message NullRequest {
-
-}
-
-message PathologiesList {
-  repeated int32 list = 1;
-}
-
-message DeviceState {
-  bool state = 1;
-}
-
-message NumberRequest {
-  int32 value = 1;
 }
 
 // The request message containing the user's name.

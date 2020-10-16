@@ -39,17 +39,10 @@ using grpc::ServerContext;
 using grpc::Status;
 using helloworld::HelloRequest;
 using helloworld::HelloReply;
-using helloworld::NullRequest;
-using helloworld::NumberRequest;
 using helloworld::Greeter;
-using helloworld::DeviceState;
-using helloworld::PathologiesList;
+
 
 int number;
-//usbdev* dev;
-// usbdev dev = usbdev();
-
-//AuraJson json = AuraJson();
 
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
@@ -60,43 +53,6 @@ class GreeterServiceImpl final : public Greeter::Service {
     return Status::OK;
   }
 
-  Status getValue(ServerContext* context, const NullRequest* request,
-                  NumberRequest* reply) override {
-    //std::string s = std::to_string(number);
-    reply->set_value(number);
-    return Status::OK;
-  }
-
-  Status setValue(ServerContext* context, const NumberRequest* request,
-                  HelloReply* reply) override {
-    std::string prefix("valor ingresado ");           
-    number = number +  request->value();
-    std::string s = std::to_string(request->value());
-    reply->set_message(prefix + s);
-    return Status::OK;
-  }
-
-
-  // Status openDev(ServerContext* context, const NullRequest* request,
-  //                 DeviceState* reply) override {
-  //   bool device = dev.openDevice();
-  //   reply->set_state(device);
-  //   return Status::OK;
-  // }
-
-  //   Status getPathologies(ServerContext* context, const NullRequest* request,
-  //                 PathologiesList* reply) override {
-  //     QVector<int> list = json.getPathologies();
-  //     reply->set_list([1,2,3]);
-  //   return Status::OK;
-  // }
-
-  Status getPathologies(ServerContext* context, const NullRequest* request,
-                  HelloReply* reply) override {
-      //QVector<int> list = json.getPathologies();
-      reply->set_message("getting pathologies");
-    return Status::OK;
-  }
 };
 
 void RunServer() {
